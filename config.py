@@ -10,7 +10,7 @@ _C.SYSTEM.HOSTNAMES = []
 _C.DATASET = CN()
 _C.DATASET.NAME = "rplan"
 _C.DATASET.SUBSET = ""
-_C.DATASET.BATCHSIZE = 8
+_C.DATASET.BATCHSIZE = 128
 
 _C.MODEL = CN()
 _C.MODEL.GENERATOR = CN()
@@ -36,7 +36,7 @@ _C.PATH.Z_FILE = "fixed_z/fixed_xyaw_rplan_0320.pkl"
 _C.PATH.LOG_DIR = "runs_rplan"
 
 _C.MANUAL = CN()
-_C.MANUAL.RPLAN_PATH = "/content/FloorplanGANForCollab/data_FloorplanGAN/pkls"
+_C.MANUAL.RPLAN_PATH = "/content/name_train"
 
 
 def get_cfg():
