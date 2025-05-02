@@ -53,6 +53,9 @@ cfg = get_cfg()
 with open("real_dataset_full.pkl", "rb") as f:
     real_dataset = pickle.load(f)
 
+print("✅ Dataset loaded.")
+print("✅ Configuration loaded.")
+
 @app.route('/generate', methods=['GET'])
 def generate_floorplan_glb():
     try:
@@ -82,4 +85,4 @@ def generate_floorplan_glb():
         return {"status": "error", "message": str(e)}, 500
 if __name__ == "__main__":
     threading.Thread(target=cleanup_old_exports, daemon=True).start()
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=False, use_reloader=False)
