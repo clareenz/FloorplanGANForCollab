@@ -14,6 +14,7 @@ import threading
 import time
 
 EXPORT_DIR = "api_exports"
+os.makedirs(EXPORT_DIR, exist_ok=True)
 EXPIRY_SECONDS = 60          # Delete files older than 60 seconds
 CLEANUP_INTERVAL = 60 * 10     # Run cleanup every 60 seconds
 
@@ -61,7 +62,6 @@ def generate_floorplan_glb():
     try:
         epoch = int(request.args.get('epoch', 650))
         export_dir = EXPORT_DIR
-        os.makedirs(export_dir, exist_ok=True)
         # Google Drive ID for epoch 550 model
         gdrive_id = "13yZQiVQz04aoyH3NDH6WzxpUtba5R4dh"
         checkpoint_path = f"params_rplan_epoch_{epoch:04d}.pkl"
