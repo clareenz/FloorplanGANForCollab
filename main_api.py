@@ -67,6 +67,9 @@ checkpoint_path = f"params_rplan_epoch.pkl"
 downloaded_file = download_checkpoint_if_needed(checkpoint_path, gdrive_id)
 print("Final file path:", downloaded_file)
 
+ # Load model and generate layout
+generator = load_models(cfg, real_dataset, device, checkpoint_path)
+
 
 @app.route('/generate', methods=['GET'])
 def generate_floorplan_glb():
@@ -76,8 +79,7 @@ def generate_floorplan_glb():
         uid = str(uuid.uuid4())[:8]
         glb_path = os.path.join(export_dir, f"floorplan_{uid}.glb")
 
-        # Load model and generate layout
-        generator = load_models(cfg, real_dataset, device, checkpoint_path)
+       
         layout_tensor = generate_layout(generator, real_dataset, device)
 
         # Export to .glb only
